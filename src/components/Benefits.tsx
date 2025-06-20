@@ -94,16 +94,6 @@ const Benefits = () => {
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-full opacity-80 blur-xl"></div>
                 <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-tr from-red-400 to-orange-500 rounded-full opacity-70 blur-lg"></div>
               </div>
-
-              {/* Floating Badge */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4 border border-orange-100">
-                <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                  <div className="text-sm font-semibold text-gray-900">
-                    Service actif 24h/7j
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
