@@ -37,9 +37,9 @@ const Header = () => {
               <Link to="/produits" className="text-gray-700 hover:text-total-blue font-medium">
                 Produits
               </Link>
-              <a href="#livraison" className="text-gray-700 hover:text-total-blue font-medium">
+              <Link to="/livraison" className="text-gray-700 hover:text-total-blue font-medium">
                 Livraison
-              </a>
+              </Link>
               <a href="#contact" className="text-gray-700 hover:text-total-blue font-medium">
                 Contact
               </a>
@@ -67,9 +67,9 @@ const Header = () => {
                 <Link to="/produits" className="text-gray-700 hover:text-total-blue font-medium">
                   Produits
                 </Link>
-                <a href="#livraison" className="text-gray-700 hover:text-total-blue font-medium">
+                <Link to="/livraison" className="text-gray-700 hover:text-total-blue font-medium">
                   Livraison
-                </a>
+                </Link>
                 <a href="#contact" className="text-gray-700 hover:text-total-blue font-medium">
                   Contact
                 </a>
