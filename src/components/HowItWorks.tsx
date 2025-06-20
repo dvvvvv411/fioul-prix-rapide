@@ -24,8 +24,15 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-16 bg-total-blue text-white">
-      <div className="container mx-auto px-4">
+    <section className="py-16 bg-gradient-to-br from-total-blue via-blue-900 to-total-blue text-white relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 right-1/4 w-80 h-80 bg-gradient-to-bl from-white/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-gradient-to-tr from-red-500/20 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-orange-500/5 to-transparent rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Comment ça marche ?
@@ -46,7 +53,7 @@ const HowItWorks = () => {
                 </div>
                 
                 {/* Icon */}
-                <div className="mx-auto mb-6 w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                <div className="mx-auto mb-6 w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
                   <IconComponent size={40} />
                 </div>
                 

@@ -57,8 +57,14 @@ const PriceTrends = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-blue-50 to-white">
-      <div className="container mx-auto px-4">
+    <section className="py-16 bg-gradient-to-b from-red-50/60 via-orange-50/40 to-blue-50/60 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-br from-blue-200/20 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-tl from-orange-200/15 to-transparent rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Tendances des Prix du Fioul
@@ -70,7 +76,7 @@ const PriceTrends = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {trends.map((trend, index) => (
-            <Card key={index} className="text-center hover:shadow-lg transition-shadow border-0 bg-white/80 backdrop-blur-sm">
+            <Card key={index} className="text-center hover:shadow-lg transition-shadow border-0 bg-white/90 backdrop-blur-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-total-blue text-sm font-medium">
                   {trend.period}
@@ -91,7 +97,7 @@ const PriceTrends = () => {
           ))}
         </div>
 
-        <Card className="bg-gradient-to-r from-orange-50 to-red-50 border-orange-200">
+        <Card className="bg-gradient-to-r from-orange-50/90 to-red-50/90 backdrop-blur-sm border-orange-200/50">
           <CardContent className="p-6">
             <div className="text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">

@@ -5,17 +5,18 @@ import { Flame, ChevronRight, Shield, Truck, Star, ArrowRight } from 'lucide-rea
 
 const Hero = () => {
   return (
-    <section className="bg-white py-16 md:py-24 relative overflow-hidden">
+    <section className="bg-gradient-to-br from-orange-50/80 via-white to-red-50/60 py-16 md:py-24 relative overflow-hidden">
       {/* Modern geometric background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-orange-100/30 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-red-100/20 to-transparent rounded-full blur-2xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-orange-200/20 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-red-200/15 to-transparent rounded-full blur-2xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-orange-100/10 to-red-100/10 rounded-full blur-3xl"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Modern Badge */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200/50 rounded-full px-6 py-3 mb-8 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-50/90 to-red-50/90 backdrop-blur-sm border border-orange-200/50 rounded-full px-6 py-3 mb-8 hover:shadow-lg transition-all duration-300 cursor-pointer group">
             <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center shadow-sm">
               <Flame size={16} className="text-white" />
             </div>
@@ -42,7 +43,7 @@ const Hero = () => {
 
           {/* Modern Trust Indicators */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12 max-w-2xl mx-auto">
-            <div className="flex items-center justify-center gap-3 p-4 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-center gap-3 p-4 bg-white/80 backdrop-blur-sm border border-white/40 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
               <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
                 <Truck size={20} className="text-green-600" />
               </div>
@@ -51,7 +52,7 @@ const Hero = () => {
                 <div className="text-xs text-gray-500">dès 2000L</div>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-3 p-4 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-center gap-3 p-4 bg-white/80 backdrop-blur-sm border border-white/40 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
               <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
                 <Shield size={20} className="text-blue-600" />
               </div>
@@ -60,7 +61,7 @@ const Hero = () => {
                 <div className="text-xs text-gray-500">sans surprise</div>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-3 p-4 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-center gap-3 p-4 bg-white/80 backdrop-blur-sm border border-white/40 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
               <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
                 <Star size={20} className="text-amber-600" />
               </div>

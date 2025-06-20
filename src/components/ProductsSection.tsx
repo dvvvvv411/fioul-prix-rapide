@@ -21,8 +21,14 @@ const ProductsSection = () => {
   ];
 
   return (
-    <section id="produits" className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="produits" className="py-16 bg-gradient-to-br from-blue-50/60 via-gray-50/80 to-orange-50/40 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 right-0 w-80 h-80 bg-gradient-to-bl from-blue-200/15 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-gradient-to-tr from-orange-200/20 to-transparent rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Nos Produits Fioul
@@ -34,7 +40,7 @@ const ProductsSection = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Standard Product */}
-          <Card className="relative hover:shadow-lg transition-shadow">
+          <Card className="relative hover:shadow-lg transition-shadow bg-white/90 backdrop-blur-sm border-white/40">
             <CardHeader className="text-center pb-6">
               <div className="mx-auto mb-4 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
                 <Flame className="text-total-blue" size={32} />
@@ -65,7 +71,7 @@ const ProductsSection = () => {
           </Card>
 
           {/* Premium Product */}
-          <Card className="relative hover:shadow-lg transition-shadow border-total-red border-2">
+          <Card className="relative hover:shadow-lg transition-shadow border-total-red border-2 bg-white/90 backdrop-blur-sm">
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
               <Badge className="bg-total-red text-white px-4 py-1">
                 Recommandé
