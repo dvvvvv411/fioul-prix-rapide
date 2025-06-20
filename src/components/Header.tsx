@@ -40,9 +40,9 @@ const Header = () => {
               <Link to="/livraison" className="text-gray-700 hover:text-total-blue font-medium">
                 Livraison
               </Link>
-              <a href="#contact" className="text-gray-700 hover:text-total-blue font-medium">
+              <Link to="/contact" className="text-gray-700 hover:text-total-blue font-medium">
                 Contact
-              </a>
+              </Link>
               <Button className="bg-total-red hover:bg-red-700 text-white font-bold">
                 Commander maintenant
               </Button>
@@ -70,9 +70,9 @@ const Header = () => {
                 <Link to="/livraison" className="text-gray-700 hover:text-total-blue font-medium">
                   Livraison
                 </Link>
-                <a href="#contact" className="text-gray-700 hover:text-total-blue font-medium">
+                <Link to="/contact" className="text-gray-700 hover:text-total-blue font-medium">
                   Contact
-                </a>
+                </Link>
                 <Button className="bg-total-red hover:bg-red-700 text-white font-bold w-full">
                   Commander maintenant
                 </Button>
