@@ -19,9 +19,11 @@ const Header = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="bg-total-blue text-white px-4 py-2 rounded font-bold text-xl">
-                Total Fioul France
-              </div>
+              <img 
+                src="https://i.imgur.com/NqMqAH6.png" 
+                alt="Total Fioul France"
+                className="h-12"
+              />
             </div>
 
             {/* Desktop Navigation */}

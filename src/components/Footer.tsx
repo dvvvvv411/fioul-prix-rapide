@@ -8,9 +8,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="bg-total-blue text-white px-4 py-2 rounded font-bold text-xl mb-4">
-              Total Fioul France
-            </div>
+            <img 
+              src="https://i.imgur.com/NqMqAH6.png" 
+              alt="Total Fioul France"
+              className="h-12 mb-4"
+            />
             <p className="text-gray-300 mb-4">
               Votre partenaire de confiance pour l'approvisionnement en fioul domestique en France.
             </p>
