@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -76,7 +75,7 @@ const PriceCalculator = () => {
         quantity: quantity,
         zipCode: zipCode,
         shopId: heizölConfig.shopId,
-        totalPrice: finalPrice,
+        totalPrice: totalPrice, // Changed from finalPrice to totalPrice
         deliveryFee: deliveryFee
       };
 
