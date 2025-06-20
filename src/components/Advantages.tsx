@@ -1,3 +1,4 @@
+
 import { Check, Truck, Shield, Award, Phone, CreditCard, Star, Flame } from 'lucide-react';
 
 const Advantages = () => {
@@ -35,11 +36,12 @@ const Advantages = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-orange-50/40 via-white to-blue-50/50 relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-br from-orange-50/80 via-white to-red-50/60 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/3 w-64 h-64 bg-gradient-to-br from-orange-200/15 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-gradient-to-tl from-blue-200/20 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-orange-200/20 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-red-200/15 to-transparent rounded-full blur-2xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-orange-100/10 to-red-100/10 rounded-full blur-3xl"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -57,8 +59,8 @@ const Advantages = () => {
             const IconComponent = advantage.icon;
             return (
               <div key={index} className="text-center group hover:transform hover:scale-105 transition-transform duration-200">
-                <div className="mx-auto mb-4 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-total-blue group-hover:text-white transition-colors">
-                  <IconComponent size={32} />
+                <div className="mx-auto mb-4 w-16 h-16 bg-gradient-to-r from-orange-100 to-red-100 rounded-full flex items-center justify-center transition-colors">
+                  <IconComponent size={32} className="text-orange-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {advantage.title}
