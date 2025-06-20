@@ -61,22 +61,22 @@ const HorizontalPriceCalculator = () => {
   };
 
   return (
-    <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-white/20">
+    <div className="bg-gradient-to-r from-red-600 to-orange-500 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-red-400/30">
       <div className="flex items-center gap-2 mb-4">
-        <Calculator className="text-red-600" size={20} />
-        <h3 className="text-lg font-bold text-gray-900">Calculateur de Prix</h3>
+        <Calculator className="text-white" size={20} />
+        <h3 className="text-lg font-bold text-white">Calculateur de Prix</h3>
       </div>
       
       {/* Horizontal Calculator Form */}
       <div className="grid grid-cols-1 lg:grid-cols-6 gap-4 items-end">
         {/* Zip Code - moved to first position */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-white mb-2">
             <MapPin size={16} className="inline mr-1" />
             Code postal
           </label>
           <div className={`p-4 rounded-lg border-2 text-left transition-all h-16 flex items-center ${
-            zipCode ? 'border-orange-400 bg-orange-50' : 'border-gray-200 hover:border-orange-200 bg-white'
+            zipCode ? 'border-white bg-white/20' : 'border-white/40 hover:border-white bg-white/10'
           }`}>
             <Input
               type="text"
@@ -85,19 +85,19 @@ const HorizontalPriceCalculator = () => {
               onChange={(e) => setZipCode(e.target.value)}
               pattern="[0-9]{5}"
               maxLength={5}
-              className="border-0 bg-transparent p-0 text-lg font-bold text-gray-700 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="border-0 bg-transparent p-0 text-lg font-bold text-white placeholder:text-white/60 focus-visible:ring-0 focus-visible:ring-offset-0"
             />
           </div>
         </div>
 
         {/* Quantity - moved to second position */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-white mb-2">
             <Fuel size={16} className="inline mr-1" />
             Quantité (L)
           </label>
           <div className={`p-4 rounded-lg border-2 text-left transition-all h-16 flex items-center ${
-            quantity ? 'border-orange-400 bg-orange-50' : 'border-gray-200 hover:border-orange-200 bg-white'
+            quantity ? 'border-white bg-white/20' : 'border-white/40 hover:border-white bg-white/10'
           }`}>
             <Input
               type="number"
@@ -107,55 +107,55 @@ const HorizontalPriceCalculator = () => {
               min={heizölConfig.limits.minLiters}
               max={heizölConfig.limits.maxLiters}
               step="100"
-              className="border-0 bg-transparent p-0 text-lg font-bold text-gray-700 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="border-0 bg-transparent p-0 text-lg font-bold text-white placeholder:text-white/60 focus-visible:ring-0 focus-visible:ring-offset-0"
             />
           </div>
         </div>
 
         {/* Product Selection - moved to third position */}
         <div className="lg:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Type de fioul</label>
+          <label className="block text-sm font-medium text-white mb-2">Type de fioul</label>
           <div className="grid grid-cols-2 gap-2">
             <button
               onClick={() => setSelectedProduct('standard')}
               className={`p-3 rounded-lg border-2 text-left transition-all ${
                 selectedProduct === 'standard'
-                  ? 'border-orange-400 bg-orange-50'
-                  : 'border-gray-200 hover:border-orange-200'
+                  ? 'border-white bg-white/20'
+                  : 'border-white/40 hover:border-white bg-white/10'
               }`}
             >
-              <div className="text-sm font-medium">Standard</div>
-              <div className="text-lg font-bold text-red-600">0,70€/L</div>
+              <div className="text-sm font-medium text-white">Standard</div>
+              <div className="text-lg font-bold text-white">0,70€/L</div>
             </button>
             <button
               onClick={() => setSelectedProduct('premium')}
               className={`p-3 rounded-lg border-2 text-left transition-all ${
                 selectedProduct === 'premium'
-                  ? 'border-orange-400 bg-orange-50'
-                  : 'border-gray-200 hover:border-orange-200'
+                  ? 'border-white bg-white/20'
+                  : 'border-white/40 hover:border-white bg-white/10'
               }`}
             >
-              <div className="text-sm font-medium flex items-center gap-1">
+              <div className="text-sm font-medium flex items-center gap-1 text-white">
                 Premium
-                <span className="bg-red-500 text-white text-xs px-1 py-0.5 rounded">TOP</span>
+                <span className="bg-yellow-400 text-red-600 text-xs px-1 py-0.5 rounded font-bold">TOP</span>
               </div>
-              <div className="text-lg font-bold text-red-600">0,73€/L</div>
+              <div className="text-lg font-bold text-white">0,73€/L</div>
             </button>
           </div>
         </div>
 
         {/* Price Display */}
         <div className="text-center">
-          <div className="text-sm font-medium text-gray-700 mb-2">Prix total TTC</div>
+          <div className="text-sm font-medium text-white mb-2">Prix total TTC</div>
           {parseInt(quantity) >= heizölConfig.limits.minLiters ? (
-            <div className="bg-gradient-to-r from-red-50 to-orange-50 p-3 rounded-lg border border-orange-200">
-              <div className="text-2xl font-bold text-red-600">{finalPrice.toFixed(2)}€</div>
+            <div className="bg-white/20 backdrop-blur-sm p-3 rounded-lg border border-white/30">
+              <div className="text-2xl font-bold text-white">{finalPrice.toFixed(2)}€</div>
               {deliveryFee === 0 && (
-                <div className="text-xs text-green-600 font-medium">Livraison gratuite !</div>
+                <div className="text-xs text-yellow-300 font-medium">Livraison gratuite !</div>
               )}
             </div>
           ) : (
-            <div className="text-sm text-gray-500 p-3">
+            <div className="text-sm text-white/70 p-3">
               Min. {heizölConfig.limits.minLiters.toLocaleString()}L
             </div>
           )}
@@ -166,11 +166,11 @@ const HorizontalPriceCalculator = () => {
           <Button 
             onClick={handleCheckout}
             disabled={parseInt(quantity) < heizölConfig.limits.minLiters || isCalculating}
-            className="w-full h-12 bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-700 hover:to-orange-600 text-white font-bold shadow-xl disabled:opacity-50"
+            className="w-full h-12 bg-white hover:bg-white/90 text-red-600 font-bold shadow-xl disabled:opacity-50"
           >
             {isCalculating ? (
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-4 h-4 border-2 border-red-600 border-t-transparent rounded-full animate-spin"></div>
                 <span className="hidden sm:inline">Préparation...</span>
               </div>
             ) : (
@@ -185,10 +185,10 @@ const HorizontalPriceCalculator = () => {
       </div>
 
       {/* Additional Info */}
-      <div className="mt-4 text-xs text-gray-500 text-center">
+      <div className="mt-4 text-xs text-white/80 text-center">
         Prix indicatifs TTC • Commande minimum : {heizölConfig.limits.minLiters.toLocaleString()}L
         {parseInt(quantity) >= 1800 && parseInt(quantity) < heizölConfig.delivery.freeDeliveryThreshold && (
-          <span className="text-orange-600 font-medium ml-2">
+          <span className="text-yellow-300 font-medium ml-2">
             • Plus que {heizölConfig.delivery.freeDeliveryThreshold - parseInt(quantity)}L pour la livraison gratuite
           </span>
         )}
