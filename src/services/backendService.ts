@@ -19,12 +19,6 @@ export interface BackendCheckoutData {
   price_per_liter: number;
 }
 
-export interface TokenResponse {
-  success: boolean;
-  token?: string;
-  error?: string;
-}
-
 export interface BackendResponse {
   success: boolean;
   checkoutUrl?: string;
@@ -71,11 +65,21 @@ export const backendService = {
         throw new Error(`Token creation failed: ${tokenResponse.status} ${tokenResponse.statusText}`);
       }
 
-      const tokenResult: TokenResponse = await tokenResponse.json();
-      console.log('Token response:', tokenResult);
+      // Parse the response - backend returns just the token string directly
+      const tokenResult = await tokenResponse.text();
+      console.log('Token response (raw):', tokenResult);
       
-      if (tokenResult.success && tokenResult.token) {
-        const checkoutUrl = `${heizölConfig.checkoutUrl}?token=${tokenResult.token}`;
+      // Try to parse as JSON first, fallback to treating as plain text
+      let token: string;
+      try {
+        const parsed = JSON.parse(tokenResult);
+        token = parsed.token || parsed; // Handle both {token: "..."} and direct token formats
+      } catch {
+        token = tokenResult.trim(); // Treat as plain text token
+      }
+      
+      if (token && token.length > 0) {
+        const checkoutUrl = `${heizölConfig.checkoutUrl}?token=${token}`;
         console.log('Using token-based checkout URL:', checkoutUrl);
         
         return {
@@ -83,7 +87,7 @@ export const backendService = {
           checkoutUrl: checkoutUrl
         };
       } else {
-        throw new Error(tokenResult.error || 'Failed to create order token');
+        throw new Error('No token received from backend');
       }
     } catch (error) {
       console.error('Backend service error:', error);
