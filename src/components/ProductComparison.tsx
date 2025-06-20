@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -30,7 +29,7 @@ const ProductComparison = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
+    <section id="comparison-section" className="py-20 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 right-0 w-80 h-80 bg-gradient-to-bl from-blue-200/10 to-transparent rounded-full blur-3xl"></div>

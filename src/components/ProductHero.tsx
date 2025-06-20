@@ -1,8 +1,21 @@
-
 import { Button } from '@/components/ui/button';
 import { Flame, Star, Shield, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const ProductHero = () => {
+  const navigate = useNavigate();
+
+  const handleGoToLanding = () => {
+    navigate('/#hero');
+  };
+
+  const handleScrollToComparison = () => {
+    const element = document.getElementById('comparison-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="bg-gradient-to-br from-blue-50/90 via-orange-50/70 to-amber-50/80 py-16 md:py-24 relative overflow-hidden">
       {/* Background elements */}
@@ -73,6 +86,7 @@ const ProductHero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '1.2s' }}>
             <Button 
+              onClick={handleGoToLanding}
               size="lg" 
               className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl group hover:scale-105"
             >
@@ -80,6 +94,7 @@ const ProductHero = () => {
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
+              onClick={handleScrollToComparison}
               variant="outline" 
               size="lg" 
               className="border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-4 text-lg rounded-xl font-semibold transition-all duration-300 hover:scale-105"

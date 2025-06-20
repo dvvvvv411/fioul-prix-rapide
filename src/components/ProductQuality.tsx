@@ -1,8 +1,18 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Shield, Award, Truck, Clock, ThermometerSun, Droplets } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const ProductQuality = () => {
+  const navigate = useNavigate();
+
+  const handleGoToLanding = () => {
+    navigate('/#hero');
+  };
+
+  const handleGoToContact = () => {
+    navigate('/contact');
+  };
+
   const qualityFeatures = [
     {
       icon: Shield,
@@ -138,10 +148,16 @@ const ProductQuality = () => {
               Nous sommes si confiants dans la qualité de nos produits que nous offrons une garantie de satisfaction complète
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-total-blue px-8 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
+              <button 
+                onClick={handleGoToLanding}
+                className="bg-white text-total-blue px-8 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
+              >
                 En savoir plus
               </button>
-              <button className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-colors">
+              <button 
+                onClick={handleGoToContact}
+                className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-colors"
+              >
                 Nous contacter
               </button>
             </div>
