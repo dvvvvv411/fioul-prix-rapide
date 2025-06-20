@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -33,7 +32,7 @@ const ProductComparison = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Standard Product */}
           <Card className="relative hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white via-blue-50/30 to-white border-2 border-blue-100/50 hover:border-blue-200 group hover:scale-105">
             <CardHeader className="text-center pb-6 relative">
@@ -115,58 +114,6 @@ const ProductComparison = () => {
               </Button>
             </CardContent>
           </Card>
-        </div>
-
-        {/* Comparison Table */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border-2 border-white/50">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
-                <tr>
-                  <th className="px-8 py-6 text-left text-base font-bold text-gray-900">Caractéristiques</th>
-                  <th className="px-8 py-6 text-center text-base font-bold text-total-blue">Standard</th>
-                  <th className="px-8 py-6 text-center text-base font-bold text-total-red">Premium</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200/50">
-                {comparisonFeatures.map((item, index) => (
-                  <tr key={index} className="hover:bg-gray-50/50 transition-colors">
-                    <td className="px-8 py-5 text-base font-semibold text-gray-900">{item.feature}</td>
-                    <td className="px-8 py-5 text-center">
-                      {typeof item.standard === 'boolean' ? (
-                        item.standard ? (
-                          <div className="inline-flex items-center justify-center w-8 h-8 bg-green-100 rounded-full">
-                            <Check className="text-success-green" size={20} />
-                          </div>
-                        ) : (
-                          <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
-                            <X className="text-gray-400" size={20} />
-                          </div>
-                        )
-                      ) : (
-                        <span className="font-bold text-total-blue text-lg">{item.standard}</span>
-                      )}
-                    </td>
-                    <td className="px-8 py-5 text-center">
-                      {typeof item.premium === 'boolean' ? (
-                        item.premium ? (
-                          <div className="inline-flex items-center justify-center w-8 h-8 bg-green-100 rounded-full">
-                            <Check className="text-success-green" size={20} />
-                          </div>
-                        ) : (
-                          <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
-                            <X className="text-gray-400" size={20} />
-                          </div>
-                        )
-                      ) : (
-                        <span className="font-bold text-total-red text-lg">{item.premium}</span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
     </section>
