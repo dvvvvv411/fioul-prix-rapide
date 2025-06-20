@@ -1,4 +1,3 @@
-
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -20,25 +19,21 @@ const MentionsLegales = () => {
                 <p><strong>Raison sociale :</strong> Total Pacifique Sàrl</p>
                 <p><strong>Forme juridique :</strong> Société à responsabilité limitée (SARL)</p>
                 <p><strong>Capital social :</strong> 10 000 €</p>
-                <p><strong>Siège social :</strong> 123 Avenue des Champs-Élysées, 75008 Paris, France</p>
-                <p><strong>Directeur de la publication :</strong> Jean Dupont</p>
-                <p><strong>SIREN :</strong> 123 456 789</p>
-                <p><strong>SIRET :</strong> 123 456 789 00012</p>
-                <p><strong>N° TVA intracommunautaire :</strong> FR12345678901</p>
-                <p><strong>Téléphone :</strong> 01 23 45 67 89</p>
-                <p><strong>Email :</strong> contact@total-fioul-france.fr</p>
+                <p><strong>Siège social :</strong> 5 rue Michel-Ange, 75016 Paris, France</p>
+                <p><strong>Directeur de la publication :</strong> Patrick Pouyanné</p>
+                <p><strong>SIREN :</strong> 775744998</p>
+                <p><strong>SIRET :</strong> 77574499800037</p>
+                <p><strong>N° TVA intracommunautaire :</strong> FR64521322993</p>
+                <p><strong>Email :</strong> info@total-fioul.fr</p>
+                <p><strong>Site web :</strong> <a href="https://total-fioul.fr" className="text-blue-600 hover:underline">https://total-fioul.fr</a></p>
               </div>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Hébergement</h2>
               <p className="mb-4">
-                Le site est hébergé par :
+                Le site est hébergé par un prestataire technique externe.
               </p>
-              <div className="bg-gray-50 p-6 rounded-lg mb-6">
-                <p><strong>Lovable</strong></p>
-                <p>Site web : <a href="https://lovable.dev" className="text-blue-600 hover:underline">https://lovable.dev</a></p>
-              </div>
             </section>
 
             <section className="mb-8">
@@ -57,7 +52,7 @@ const MentionsLegales = () => {
                 Les informations contenues sur ce site sont aussi précises que possible et le site remis à jour à différentes périodes de l'année, mais peut toutefois contenir des inexactitudes ou des omissions.
               </p>
               <p className="mb-4">
-                Si vous constatez une lacune, erreur ou ce qui parait être un dysfonctionnement, merci de bien vouloir le signaler par email, à l'adresse contact@total-fioul-france.fr, en décrivant le problème de la manière la plus précise possible.
+                Si vous constatez une lacune, erreur ou ce qui parait être un dysfonctionnement, merci de bien vouloir le signaler par email, à l'adresse info@total-fioul.fr, en décrivant le problème de la manière la plus précise possible.
               </p>
             </section>
 
@@ -84,7 +79,7 @@ const MentionsLegales = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Droit applicable et juridiction compétente</h2>
               <p className="mb-4">
-                Tout litige en relation avec l'utilisation du site www.total-fioul-france.fr est soumis au droit français. Il est fait attribution exclusive de juridiction aux tribunaux compétents de Paris.
+                Tout litige en relation avec l'utilisation du site https://total-fioul.fr est soumis au droit français. Il est fait attribution exclusive de juridiction aux tribunaux compétents de Paris.
               </p>
             </section>
           </div>

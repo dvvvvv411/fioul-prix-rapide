@@ -1,4 +1,3 @@
-
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -172,9 +171,8 @@ const PolitiqueCookies = () => {
                 Pour toute question concernant notre utilisation des cookies, contactez-nous :
               </p>
               <div className="bg-gray-50 p-4 rounded-lg mb-4">
-                <p><strong>Email :</strong> contact@total-fioul-france.fr</p>
-                <p><strong>Téléphone :</strong> 01 23 45 67 89</p>
-                <p><strong>Adresse :</strong> Total Pacifique Sàrl, 123 Avenue des Champs-Élysées, 75008 Paris</p>
+                <p><strong>Email :</strong> info@total-fioul.fr</p>
+                <p><strong>Adresse :</strong> Total Pacifique Sàrl, 5 rue Michel-Ange, 75016 Paris</p>
               </div>
             </section>
 

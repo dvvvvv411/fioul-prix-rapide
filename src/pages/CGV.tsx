@@ -1,4 +1,3 @@
-
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -37,8 +36,7 @@ const CGV = () => {
                 La commande peut être passée :
               </p>
               <ul className="list-disc pl-6 mb-4">
-                <li>Par téléphone au 01 23 45 67 89</li>
-                <li>Par email à contact@total-fioul-france.fr</li>
+                <li>Par email à info@total-fioul.fr</li>
                 <li>Via le formulaire de contact sur notre site web</li>
               </ul>
               <p className="mb-4">
