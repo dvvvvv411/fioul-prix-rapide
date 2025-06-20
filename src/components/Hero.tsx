@@ -2,8 +2,15 @@
 import { Button } from '@/components/ui/button';
 import HorizontalPriceCalculator from './HorizontalPriceCalculator';
 import { Flame, ChevronRight, Shield, Truck, Star, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
+
   return (
     <section className="bg-gradient-to-br from-blue-50/90 via-orange-50/70 to-amber-50/80 py-16 md:py-24 relative overflow-hidden">
       {/* Enhanced welcoming background elements */}
@@ -88,6 +95,7 @@ const Hero = () => {
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
+              onClick={handleContactClick}
               variant="outline" 
               size="lg" 
               className="border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-4 text-lg rounded-xl font-semibold transition-all duration-300 hover:scale-105"

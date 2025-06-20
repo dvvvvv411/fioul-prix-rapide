@@ -1,4 +1,3 @@
-
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
@@ -67,15 +66,8 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400">
-              © 2024 Total Fioul France. Tous droits réservés.
-            </div>
-            <div className="flex gap-6 mt-4 md:mt-0 text-gray-400">
-              <a href="#" className="hover:text-white">Facebook</a>
-              <a href="#" className="hover:text-white">Twitter</a>
-              <a href="#" className="hover:text-white">LinkedIn</a>
-            </div>
+          <div className="text-center text-gray-400">
+            © 2024 Total Fioul France. Tous droits réservés.
           </div>
         </div>
       </div>
