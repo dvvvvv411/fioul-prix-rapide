@@ -75,125 +75,122 @@ const PriceCalculator = () => {
   };
 
   return (
-    <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-sm sticky top-4">
-      <CardHeader className="bg-gradient-to-r from-red-600 to-orange-500 text-white rounded-t-lg">
-        <CardTitle className="text-2xl text-center flex items-center justify-center gap-2">
-          <Calculator size={24} />
+    <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-sm sticky top-4 max-w-2xl mx-auto">
+      <CardHeader className="bg-gradient-to-r from-red-600 to-orange-500 text-white rounded-t-lg pb-4">
+        <CardTitle className="text-xl text-center flex items-center justify-center gap-2">
+          <Calculator size={20} />
           Calculateur de Prix Fioul
         </CardTitle>
       </CardHeader>
-      <CardContent className="p-6">
-        {/* Product Selection */}
-        <div className="mb-6">
-          <Label className="text-base font-semibold mb-3 block">
+      <CardContent className="p-4">
+        {/* Product Selection - Horizontal Layout */}
+        <div className="mb-4">
+          <Label className="text-sm font-semibold mb-2 block">
             Choisissez votre fioul
           </Label>
           <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct}>
-            <div className="flex items-center space-x-2 p-4 border-2 rounded-lg hover:bg-gray-50 hover:border-orange-200 transition-colors">
-              <RadioGroupItem value="standard" id="standard" />
-              <Label htmlFor="standard" className="flex-1 cursor-pointer">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <div className="font-medium text-gray-900">Fioul Standard</div>
-                    <div className="text-sm text-gray-500">Fioul de qualité pour usage quotidien</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="flex items-center space-x-2 p-3 border-2 rounded-lg hover:bg-gray-50 hover:border-orange-200 transition-colors">
+                <RadioGroupItem value="standard" id="standard" />
+                <Label htmlFor="standard" className="flex-1 cursor-pointer">
+                  <div className="flex flex-col">
+                    <div className="font-medium text-sm text-gray-900">Fioul Standard</div>
+                    <div className="text-xs text-gray-500">Usage quotidien</div>
+                    <div className="text-lg font-bold text-red-600 mt-1">0,70€/L</div>
                   </div>
-                  <div className="text-xl font-bold text-red-600">
-                    0,70€/L
-                  </div>
-                </div>
-              </Label>
-            </div>
-            <div className="flex items-center space-x-2 p-4 border-2 rounded-lg hover:bg-gray-50 hover:border-orange-200 transition-colors border-orange-300 bg-orange-50">
-              <RadioGroupItem value="premium" id="premium" />
-              <Label htmlFor="premium" className="flex-1 cursor-pointer">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <div className="font-medium flex items-center gap-2 text-gray-900">
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2 p-3 border-2 rounded-lg hover:bg-gray-50 hover:border-orange-200 transition-colors border-orange-300 bg-orange-50">
+                <RadioGroupItem value="premium" id="premium" />
+                <Label htmlFor="premium" className="flex-1 cursor-pointer">
+                  <div className="flex flex-col">
+                    <div className="font-medium flex items-center gap-1 text-sm text-gray-900">
                       Fioul Premium
-                      <span className="bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs px-2 py-1 rounded-full">
-                        Recommandé
+                      <span className="bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+                        Top
                       </span>
                     </div>
-                    <div className="text-sm text-gray-500">Fioul haut de gamme avec additifs</div>
+                    <div className="text-xs text-gray-500">Haut de gamme</div>
+                    <div className="text-lg font-bold text-red-600 mt-1">0,73€/L</div>
                   </div>
-                  <div className="text-xl font-bold text-red-600">
-                    0,73€/L
-                  </div>
-                </div>
-              </Label>
+                </Label>
+              </div>
             </div>
           </RadioGroup>
         </div>
 
-        {/* ZIP Code */}
-        <div className="mb-4">
-          <Label htmlFor="zipCode" className="text-base font-semibold mb-2 block">
-            Code postal
-          </Label>
-          <Input
-            id="zipCode"
-            type="text"
-            placeholder="ex: 75001"
-            value={zipCode}
-            onChange={(e) => setZipCode(e.target.value)}
-            pattern="[0-9]{5}"
-            maxLength={5}
-            className="text-lg"
-          />
-        </div>
-
-        {/* Quantity */}
-        <div className="mb-6">
-          <Label htmlFor="quantity" className="text-base font-semibold mb-2 block">
-            Quantité en litres
-          </Label>
-          <Input
-            id="quantity"
-            type="number"
-            placeholder="min. 1000L"
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
-            min={heizölConfig.limits.minLiters}
-            max={heizölConfig.limits.maxLiters}
-            step="100"
-            className="text-lg"
-          />
-          <div className="text-sm text-gray-500 mt-1">
-            Quantité minimum : {heizölConfig.limits.minLiters.toLocaleString()}L
+        {/* Input Fields - Horizontal Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <Label htmlFor="zipCode" className="text-sm font-semibold mb-1 block">
+              Code postal
+            </Label>
+            <Input
+              id="zipCode"
+              type="text"
+              placeholder="ex: 75001"
+              value={zipCode}
+              onChange={(e) => setZipCode(e.target.value)}
+              pattern="[0-9]{5}"
+              maxLength={5}
+              className="text-base"
+            />
+          </div>
+          <div>
+            <Label htmlFor="quantity" className="text-sm font-semibold mb-1 block">
+              Quantité (litres)
+            </Label>
+            <Input
+              id="quantity"
+              type="number"
+              placeholder="min. 1000L"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+              min={heizölConfig.limits.minLiters}
+              max={heizölConfig.limits.maxLiters}
+              step="100"
+              className="text-base"
+            />
           </div>
         </div>
+        
+        <div className="text-xs text-gray-500 mb-4">
+          Quantité minimum : {heizölConfig.limits.minLiters.toLocaleString()}L
+        </div>
 
-        {/* Price Breakdown */}
+        {/* Price Breakdown - Compact Layout */}
         {parseInt(quantity) >= heizölConfig.limits.minLiters && (
-          <div className="bg-gradient-to-r from-gray-50 to-orange-50 p-4 rounded-lg mb-6 border border-orange-100">
-            <div className="flex justify-between items-center mb-3">
-              <span className="font-medium">Prix du fioul</span>
-              <span className="font-bold text-lg">{totalPrice.toFixed(2)}€</span>
-            </div>
-            <div className="flex justify-between items-center mb-3">
-              <span className="flex items-center gap-2 font-medium">
-                <Truck size={16} />
-                Livraison
-              </span>
-              <span className={`font-bold text-lg ${deliveryFee === 0 ? 'text-green-600' : 'text-gray-900'}`}>
-                {deliveryFee === 0 ? 'Gratuite !' : `${deliveryFee}€`}
-              </span>
+          <div className="bg-gradient-to-r from-gray-50 to-orange-50 p-3 rounded-lg mb-4 border border-orange-100">
+            <div className="grid grid-cols-2 gap-4 mb-2">
+              <div className="flex justify-between items-center">
+                <span className="text-sm font-medium">Prix du fioul</span>
+                <span className="font-bold">{totalPrice.toFixed(2)}€</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="flex items-center gap-1 text-sm font-medium">
+                  <Truck size={14} />
+                  Livraison
+                </span>
+                <span className={`font-bold ${deliveryFee === 0 ? 'text-green-600' : 'text-gray-900'}`}>
+                  {deliveryFee === 0 ? 'Gratuite !' : `${deliveryFee}€`}
+                </span>
+              </div>
             </div>
             
             {parseInt(quantity) >= heizölConfig.delivery.freeDeliveryThreshold && (
-              <div className="flex items-center gap-2 text-green-600 text-sm font-medium mb-3 bg-green-50 px-3 py-2 rounded-lg">
-                <Gift size={16} />
+              <div className="flex items-center gap-2 text-green-600 text-xs font-medium mb-2 bg-green-50 px-2 py-1 rounded">
+                <Gift size={12} />
                 {getDeliveryMessage()}
               </div>
             )}
             
-            <div className="border-t border-orange-200 pt-3 flex justify-between items-center text-xl font-bold">
+            <div className="border-t border-orange-200 pt-2 flex justify-between items-center text-lg font-bold">
               <span>Total TTC</span>
-              <span className="text-red-600 text-2xl">{finalPrice.toFixed(2)}€</span>
+              <span className="text-red-600 text-xl">{finalPrice.toFixed(2)}€</span>
             </div>
             
             {parseInt(quantity) < heizölConfig.delivery.freeDeliveryThreshold && (
-              <div className="text-orange-600 text-sm font-medium mt-2">
+              <div className="text-orange-600 text-xs font-medium mt-1">
                 {getDeliveryMessage()}
               </div>
             )}
@@ -204,7 +201,7 @@ const PriceCalculator = () => {
         <Button 
           onClick={handleCheckout}
           disabled={parseInt(quantity) < heizölConfig.limits.minLiters || isCalculating}
-          className="w-full bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-700 hover:to-orange-600 text-white font-bold py-4 text-lg shadow-xl disabled:opacity-50"
+          className="w-full bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-700 hover:to-orange-600 text-white font-bold py-3 text-base shadow-xl disabled:opacity-50"
           size="lg"
         >
           {isCalculating ? (
@@ -217,7 +214,7 @@ const PriceCalculator = () => {
           )}
         </Button>
 
-        <p className="text-xs text-gray-500 text-center mt-3">
+        <p className="text-xs text-gray-500 text-center mt-2">
           Prix indicatifs TTC • Commande minimum : {heizölConfig.limits.minLiters.toLocaleString()}L
         </p>
       </CardContent>

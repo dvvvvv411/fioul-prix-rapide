@@ -5,16 +5,16 @@ import { Flame, ChevronRight } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="bg-gradient-to-br from-orange-500 via-red-500 to-red-600 py-16 md:py-24 relative overflow-hidden">
+    <section className="bg-gradient-to-br from-orange-400/80 via-red-400/70 to-red-500/80 py-16 md:py-24 relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/5 to-transparent"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="animate-fade-in text-white">
             {/* Fioul Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 hover:bg-white/30 transition-colors cursor-pointer">
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 mb-6 hover:bg-white/25 transition-colors cursor-pointer">
               <div className="w-6 h-6 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center">
                 <Flame size={14} className="text-white" />
               </div>
