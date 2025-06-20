@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <>
       {/* Promotional Banner */}
-      <div className="bg-success-green text-white py-2 px-4 text-center text-sm font-medium">
+      <div className="bg-total-red text-white py-2 px-4 text-center text-sm font-medium">
         🚚 Livraison gratuite à partir de 2000L - Partout en France
       </div>
       
