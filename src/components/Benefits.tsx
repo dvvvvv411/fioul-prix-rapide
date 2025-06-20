@@ -82,7 +82,7 @@ const Benefits = () => {
               {/* Image Container */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <img 
-                  src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80"
+                  src="https://i.imgur.com/oyKCq48.png"
                   alt="Équipe professionnelle Total Fioul France"
                   className="w-full h-[500px] lg:h-[600px] object-cover group-hover:scale-105 transition-transform duration-500"
                 />
