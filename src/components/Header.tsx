@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,21 +20,23 @@ const Header = () => {
           <div className="flex items-center justify-between h-28">
             {/* Logo */}
             <div className="flex items-center">
-              <img 
-                src="https://i.imgur.com/NqMqAH6.png" 
-                alt="Total Fioul France"
-                className="h-24"
-              />
+              <Link to="/">
+                <img 
+                  src="https://i.imgur.com/NqMqAH6.png" 
+                  alt="Total Fioul France"
+                  className="h-24"
+                />
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#accueil" className="text-gray-700 hover:text-total-blue font-medium">
+              <Link to="/" className="text-gray-700 hover:text-total-blue font-medium">
                 Accueil
-              </a>
-              <a href="#produits" className="text-gray-700 hover:text-total-blue font-medium">
+              </Link>
+              <Link to="/produits" className="text-gray-700 hover:text-total-blue font-medium">
                 Produits
-              </a>
+              </Link>
               <a href="#livraison" className="text-gray-700 hover:text-total-blue font-medium">
                 Livraison
               </a>
@@ -58,12 +61,12 @@ const Header = () => {
           {isMenuOpen && (
             <div className="md:hidden py-4 border-t">
               <nav className="flex flex-col space-y-4">
-                <a href="#accueil" className="text-gray-700 hover:text-total-blue font-medium">
+                <Link to="/" className="text-gray-700 hover:text-total-blue font-medium">
                   Accueil
-                </a>
-                <a href="#produits" className="text-gray-700 hover:text-total-blue font-medium">
+                </Link>
+                <Link to="/produits" className="text-gray-700 hover:text-total-blue font-medium">
                   Produits
-                </a>
+                </Link>
                 <a href="#livraison" className="text-gray-700 hover:text-total-blue font-medium">
                   Livraison
                 </a>
