@@ -75,15 +75,19 @@ const HorizontalPriceCalculator = () => {
             <MapPin size={16} className="inline mr-1" />
             Code postal
           </label>
-          <Input
-            type="text"
-            placeholder="75001"
-            value={zipCode}
-            onChange={(e) => setZipCode(e.target.value)}
-            pattern="[0-9]{5}"
-            maxLength={5}
-            className="h-12"
-          />
+          <div className={`p-4 rounded-lg border-2 text-left transition-all h-16 flex items-center ${
+            zipCode ? 'border-orange-400 bg-orange-50' : 'border-gray-200 hover:border-orange-200 bg-white'
+          }`}>
+            <Input
+              type="text"
+              placeholder="75001"
+              value={zipCode}
+              onChange={(e) => setZipCode(e.target.value)}
+              pattern="[0-9]{5}"
+              maxLength={5}
+              className="border-0 bg-transparent p-0 text-lg font-bold text-gray-700 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0"
+            />
+          </div>
         </div>
 
         {/* Quantity - moved to second position */}
@@ -92,16 +96,20 @@ const HorizontalPriceCalculator = () => {
             <Fuel size={16} className="inline mr-1" />
             Quantité (L)
           </label>
-          <Input
-            type="number"
-            placeholder="2000"
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
-            min={heizölConfig.limits.minLiters}
-            max={heizölConfig.limits.maxLiters}
-            step="100"
-            className="h-12"
-          />
+          <div className={`p-4 rounded-lg border-2 text-left transition-all h-16 flex items-center ${
+            quantity ? 'border-orange-400 bg-orange-50' : 'border-gray-200 hover:border-orange-200 bg-white'
+          }`}>
+            <Input
+              type="number"
+              placeholder="2000"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+              min={heizölConfig.limits.minLiters}
+              max={heizölConfig.limits.maxLiters}
+              step="100"
+              className="border-0 bg-transparent p-0 text-lg font-bold text-gray-700 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0"
+            />
+          </div>
         </div>
 
         {/* Product Selection - moved to third position */}
