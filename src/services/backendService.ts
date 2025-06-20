@@ -44,19 +44,17 @@ export const backendService = {
         throw new Error('Invalid quantity: must be greater than 0');
       }
       
-      // Calculate price per liter from product cost only (excluding delivery)
-      const pricePerLiter = data.totalPrice / liters;
-      
-      // Total amount should include delivery fee
-      const totalAmount = data.totalPrice + data.deliveryFee;
+      // Since frontend now sends finalPrice as totalPrice, we need to calculate the product cost
+      const productCost = data.totalPrice - data.deliveryFee;
+      const pricePerLiter = productCost / liters;
       
       const backendData: BackendCheckoutData = {
         product: data.product,
         liters: liters,
         shop_id: data.shopId,
-        total_amount: totalAmount, // Fixed: now includes delivery fee
+        total_amount: data.totalPrice, // This is now the final price including delivery
         delivery_fee: data.deliveryFee,
-        price_per_liter: parseFloat(pricePerLiter.toFixed(4)) // Fixed: calculated from product cost only
+        price_per_liter: parseFloat(pricePerLiter.toFixed(4)) // Calculated from product cost only
       };
       
       console.log('Transformed data for backend:', backendData);

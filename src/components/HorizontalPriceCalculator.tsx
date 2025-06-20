@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -61,7 +62,7 @@ const HorizontalPriceCalculator = () => {
         quantity: quantity,
         zipCode: zipCode,
         shopId: heizölConfig.shopId,
-        totalPrice: totalPrice, // Changed from finalPrice to totalPrice
+        totalPrice: finalPrice, // Fixed: changed from totalPrice to finalPrice
         deliveryFee: deliveryFee
       };
 
