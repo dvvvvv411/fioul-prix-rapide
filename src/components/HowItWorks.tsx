@@ -24,12 +24,12 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-total-blue via-blue-900 to-total-blue text-white relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-1/4 w-80 h-80 bg-gradient-to-bl from-white/10 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-gradient-to-tr from-red-500/20 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-orange-500/5 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-1/4 w-80 h-80 bg-gradient-to-bl from-red-500/20 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-gradient-to-tr from-red-600/30 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-red-500/10 to-transparent rounded-full blur-3xl"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -48,12 +48,12 @@ const HowItWorks = () => {
             return (
               <div key={index} className="text-center relative">
                 {/* Step Number */}
-                <div className="absolute -top-4 -right-4 bg-total-red text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="absolute -top-4 -right-4 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-lg">
                   {step.step}
                 </div>
                 
                 {/* Icon */}
-                <div className="mx-auto mb-6 w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                <div className="mx-auto mb-6 w-20 h-20 bg-red-500 bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm border border-red-500/20">
                   <IconComponent size={40} />
                 </div>
                 
@@ -68,8 +68,8 @@ const HowItWorks = () => {
                 {/* Connector Arrow */}
                 {index < steps.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <div className="w-8 h-0.5 bg-white bg-opacity-50"></div>
-                    <div className="absolute -right-1 -top-1 w-0 h-0 border-l-4 border-l-white border-l-opacity-50 border-y-2 border-y-transparent"></div>
+                    <div className="w-8 h-0.5 bg-red-400 bg-opacity-50"></div>
+                    <div className="absolute -right-1 -top-1 w-0 h-0 border-l-4 border-l-red-400 border-l-opacity-50 border-y-2 border-y-transparent"></div>
                   </div>
                 )}
               </div>
