@@ -3,11 +3,13 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { heizölConfig } from '@/config/heizol';
+import { backendService } from '@/services/backendService';
 import { Calculator, MapPin, Fuel, ShoppingCart } from 'lucide-react';
+import { toast } from 'sonner';
 
 const HorizontalPriceCalculator = () => {
   const [selectedProduct, setSelectedProduct] = useState('premium');
-  const [quantity, setQuantity] = useState('2000');
+  const [quantity, setQuantity] = useState('3000');
   const [zipCode, setZipCode] = useState('');
   const [totalPrice, setTotalPrice] = useState(0);
   const [deliveryFee, setDeliveryFee] = useState(0);
@@ -39,25 +41,47 @@ const HorizontalPriceCalculator = () => {
     setFinalPrice(total);
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     if (parseInt(quantity) < heizölConfig.limits.minLiters) {
-      alert(`Quantité minimum : ${heizölConfig.limits.minLiters}L`);
+      toast.error(`Quantité minimum : ${heizölConfig.limits.minLiters}L`);
+      return;
+    }
+
+    if (!zipCode || zipCode.length !== 5) {
+      toast.error('Veuillez saisir un code postal valide');
       return;
     }
 
     setIsCalculating(true);
     
-    const params = new URLSearchParams({
-      product: selectedProduct,
-      quantity: quantity,
-      zipCode: zipCode || '',
-      shopId: heizölConfig.shopId
-    });
-    
-    setTimeout(() => {
-      window.open(`${heizölConfig.checkoutUrl}?${params.toString()}`, '_blank');
+    try {
+      const productName = heizölConfig.products[selectedProduct as keyof typeof heizölConfig.products].name;
+      
+      const checkoutData = {
+        product: productName,
+        quantity: quantity,
+        zipCode: zipCode,
+        shopId: heizölConfig.shopId,
+        totalPrice: finalPrice,
+        deliveryFee: deliveryFee
+      };
+
+      console.log('Horizontal calculator checkout data:', checkoutData);
+      
+      const result = await backendService.createCheckout(checkoutData);
+      
+      if (result.success && result.checkoutUrl) {
+        window.open(result.checkoutUrl, '_blank');
+        toast.success('Redirection vers le checkout...');
+      } else {
+        toast.error(result.error || 'Erreur lors de la création du checkout');
+      }
+    } catch (error) {
+      console.error('Horizontal checkout error:', error);
+      toast.error('Erreur lors de la commande. Veuillez réessayer.');
+    } finally {
       setIsCalculating(false);
-    }, 500);
+    }
   };
 
   return (
@@ -73,7 +97,7 @@ const HorizontalPriceCalculator = () => {
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             <MapPin size={16} className="inline mr-1" />
-            Code postal
+            Code postal *
           </label>
           <div className={`p-4 rounded-lg border-2 text-left transition-all h-16 flex items-center ${
             zipCode ? 'border-orange-400 bg-orange-50' : 'border-gray-200 hover:border-orange-200 bg-white'
@@ -86,6 +110,7 @@ const HorizontalPriceCalculator = () => {
               pattern="[0-9]{5}"
               maxLength={5}
               className="border-0 bg-transparent p-0 text-lg font-bold text-gray-700 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0"
+              required
             />
           </div>
         </div>
@@ -101,7 +126,7 @@ const HorizontalPriceCalculator = () => {
           }`}>
             <Input
               type="number"
-              placeholder="2000"
+              placeholder="3000"
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
               min={heizölConfig.limits.minLiters}
@@ -124,7 +149,7 @@ const HorizontalPriceCalculator = () => {
                   : 'border-gray-200 hover:border-orange-200'
               }`}
             >
-              <div className="text-sm font-medium">Standard</div>
+              <div className="text-sm font-medium">{heizölConfig.products.standard.displayName}</div>
               <div className="text-lg font-bold text-red-600">0,70€/L</div>
             </button>
             <button
@@ -136,7 +161,7 @@ const HorizontalPriceCalculator = () => {
               }`}
             >
               <div className="text-sm font-medium flex items-center gap-1">
-                Premium
+                {heizölConfig.products.premium.displayName}
                 <span className="bg-red-500 text-white text-xs px-1 py-0.5 rounded">TOP</span>
               </div>
               <div className="text-lg font-bold text-red-600">0,73€/L</div>
@@ -165,7 +190,7 @@ const HorizontalPriceCalculator = () => {
         <div>
           <Button 
             onClick={handleCheckout}
-            disabled={parseInt(quantity) < heizölConfig.limits.minLiters || isCalculating}
+            disabled={parseInt(quantity) < heizölConfig.limits.minLiters || isCalculating || !zipCode}
             className="w-full h-12 bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-700 hover:to-orange-600 text-white font-bold shadow-xl disabled:opacity-50"
           >
             {isCalculating ? (
@@ -186,8 +211,8 @@ const HorizontalPriceCalculator = () => {
 
       {/* Additional Info */}
       <div className="mt-4 text-xs text-gray-500 text-center">
-        Prix indicatifs TTC • Commande minimum : {heizölConfig.limits.minLiters.toLocaleString()}L
-        {parseInt(quantity) >= 1800 && parseInt(quantity) < heizölConfig.delivery.freeDeliveryThreshold && (
+        Prix indicatifs TTC • Commande minimum : {heizölConfig.limits.minLiters.toLocaleString()}L • Livraison gratuite dès {heizölConfig.delivery.freeDeliveryThreshold.toLocaleString()}L
+        {parseInt(quantity) >= 2800 && parseInt(quantity) < heizölConfig.delivery.freeDeliveryThreshold && (
           <span className="text-orange-600 font-medium ml-2">
             • Plus que {heizölConfig.delivery.freeDeliveryThreshold - parseInt(quantity)}L pour la livraison gratuite
           </span>

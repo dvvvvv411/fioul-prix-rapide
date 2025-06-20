@@ -1,20 +1,22 @@
 
 export const heizölConfig = {
-  shopId: "93ea80da-40c2-492a-98c5-c38bfef5570c",
+  shopId: "acefaf14-6b4c-41bd-b172-133b27b9983f",
   backendUrl: "https://luhhnsvwtnmxztcmdxyq.supabase.co/functions/v1",
-  checkoutUrl: "https://checkout.total-fioul.fr.fr/checkout",
+  checkoutUrl: "https://checkout.total-fioul.fr/checkout",
   products: {
     standard: {
-      name: "Fioul Standard",
+      name: "standard_heizoel",
+      displayName: "Fioul Standard",
       pricePerLiter: 0.70,
     },
     premium: {
-      name: "Fioul Premium", 
+      name: "premium_heizoel", 
+      displayName: "Fioul Premium",
       pricePerLiter: 0.73,
     }
   },
   delivery: {
-    freeDeliveryThreshold: 2000,
+    freeDeliveryThreshold: 3000,
     deliveryFee: 39
   },
   limits: {

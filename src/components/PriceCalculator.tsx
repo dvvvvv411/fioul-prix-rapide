@@ -6,11 +6,13 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { heizölConfig } from '@/config/heizol';
+import { backendService } from '@/services/backendService';
 import { Truck, Calculator, Gift } from 'lucide-react';
+import { toast } from 'sonner';
 
 const PriceCalculator = () => {
   const [selectedProduct, setSelectedProduct] = useState('premium');
-  const [quantity, setQuantity] = useState('2000');
+  const [quantity, setQuantity] = useState('3000');
   const [zipCode, setZipCode] = useState('');
   const [totalPrice, setTotalPrice] = useState(0);
   const [deliveryFee, setDeliveryFee] = useState(0);
@@ -46,32 +48,54 @@ const PriceCalculator = () => {
     const liters = parseInt(quantity) || 0;
     if (liters >= heizölConfig.delivery.freeDeliveryThreshold) {
       return "🎉 Livraison gratuite incluse !";
-    } else if (liters >= 1800) {
+    } else if (liters >= 2800) {
       return `Plus que ${heizölConfig.delivery.freeDeliveryThreshold - liters}L pour la livraison gratuite`;
     } else {
       return "Frais de livraison : 39€";
     }
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     if (parseInt(quantity) < heizölConfig.limits.minLiters) {
-      alert(`Quantité minimum : ${heizölConfig.limits.minLiters}L`);
+      toast.error(`Quantité minimum : ${heizölConfig.limits.minLiters}L`);
+      return;
+    }
+
+    if (!zipCode || zipCode.length !== 5) {
+      toast.error('Veuillez saisir un code postal valide');
       return;
     }
 
     setIsCalculating(true);
     
-    const params = new URLSearchParams({
-      product: selectedProduct,
-      quantity: quantity,
-      zipCode: zipCode || '',
-      shopId: heizölConfig.shopId
-    });
-    
-    setTimeout(() => {
-      window.open(`${heizölConfig.checkoutUrl}?${params.toString()}`, '_blank');
+    try {
+      const productName = heizölConfig.products[selectedProduct as keyof typeof heizölConfig.products].name;
+      
+      const checkoutData = {
+        product: productName,
+        quantity: quantity,
+        zipCode: zipCode,
+        shopId: heizölConfig.shopId,
+        totalPrice: finalPrice,
+        deliveryFee: deliveryFee
+      };
+
+      console.log('Checkout data being sent:', checkoutData);
+      
+      const result = await backendService.createCheckout(checkoutData);
+      
+      if (result.success && result.checkoutUrl) {
+        window.open(result.checkoutUrl, '_blank');
+        toast.success('Redirection vers le checkout...');
+      } else {
+        toast.error(result.error || 'Erreur lors de la création du checkout');
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      toast.error('Erreur lors de la commande. Veuillez réessayer.');
+    } finally {
       setIsCalculating(false);
-    }, 500);
+    }
   };
 
   return (
@@ -94,7 +118,7 @@ const PriceCalculator = () => {
                 <RadioGroupItem value="standard" id="standard" />
                 <Label htmlFor="standard" className="flex-1 cursor-pointer">
                   <div className="flex flex-col">
-                    <div className="font-medium text-sm text-gray-900">Fioul Standard</div>
+                    <div className="font-medium text-sm text-gray-900">{heizölConfig.products.standard.displayName}</div>
                     <div className="text-xs text-gray-500">Usage quotidien</div>
                     <div className="text-lg font-bold text-red-600 mt-1">0,70€/L</div>
                   </div>
@@ -105,7 +129,7 @@ const PriceCalculator = () => {
                 <Label htmlFor="premium" className="flex-1 cursor-pointer">
                   <div className="flex flex-col">
                     <div className="font-medium flex items-center gap-1 text-sm text-gray-900">
-                      Fioul Premium
+                      {heizölConfig.products.premium.displayName}
                       <span className="bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs px-1.5 py-0.5 rounded-full">
                         Top
                       </span>
@@ -123,7 +147,7 @@ const PriceCalculator = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
             <Label htmlFor="zipCode" className="text-sm font-semibold mb-1 block">
-              Code postal
+              Code postal *
             </Label>
             <Input
               id="zipCode"
@@ -134,6 +158,7 @@ const PriceCalculator = () => {
               pattern="[0-9]{5}"
               maxLength={5}
               className="text-base"
+              required
             />
           </div>
           <div>
@@ -155,7 +180,7 @@ const PriceCalculator = () => {
         </div>
         
         <div className="text-xs text-gray-500 mb-4">
-          Quantité minimum : {heizölConfig.limits.minLiters.toLocaleString()}L
+          Quantité minimum : {heizölConfig.limits.minLiters.toLocaleString()}L • Livraison gratuite dès {heizölConfig.delivery.freeDeliveryThreshold.toLocaleString()}L
         </div>
 
         {/* Price Breakdown - Compact Layout */}
@@ -200,7 +225,7 @@ const PriceCalculator = () => {
         {/* CTA Button */}
         <Button 
           onClick={handleCheckout}
-          disabled={parseInt(quantity) < heizölConfig.limits.minLiters || isCalculating}
+          disabled={parseInt(quantity) < heizölConfig.limits.minLiters || isCalculating || !zipCode}
           className="w-full bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-700 hover:to-orange-600 text-white font-bold py-3 text-base shadow-xl disabled:opacity-50"
           size="lg"
         >
