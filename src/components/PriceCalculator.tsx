@@ -80,18 +80,27 @@ const PriceCalculator = () => {
         deliveryFee: deliveryFee
       };
 
-      console.log('Checkout data being sent:', checkoutData);
+      console.log('Price calculator - sending checkout data:', checkoutData);
       
       const result = await backendService.createCheckout(checkoutData);
       
       if (result.success && result.checkoutUrl) {
+        console.log('Price calculator - opening checkout URL:', result.checkoutUrl);
         window.open(result.checkoutUrl, '_blank');
-        toast.success('Redirection vers le checkout...');
+        
+        if (result.error) {
+          toast.success('Redirection vers le checkout...', {
+            description: result.error
+          });
+        } else {
+          toast.success('Redirection vers le checkout...');
+        }
       } else {
+        console.error('Price calculator - checkout failed:', result);
         toast.error(result.error || 'Erreur lors de la création du checkout');
       }
     } catch (error) {
-      console.error('Checkout error:', error);
+      console.error('Price calculator - checkout error:', error);
       toast.error('Erreur lors de la commande. Veuillez réessayer.');
     } finally {
       setIsCalculating(false);

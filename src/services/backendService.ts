@@ -10,6 +10,12 @@ export interface CheckoutData {
   deliveryFee: number;
 }
 
+export interface TokenResponse {
+  success: boolean;
+  token?: string;
+  error?: string;
+}
+
 export interface BackendResponse {
   success: boolean;
   checkoutUrl?: string;
@@ -21,7 +27,8 @@ export const backendService = {
     try {
       console.log('Creating checkout with data:', data);
       
-      const response = await fetch(`${heizölConfig.backendUrl}/create-checkout`, {
+      // First, try to get a token from the backend
+      const tokenResponse = await fetch(`${heizölConfig.backendUrl}/create-order-token`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,28 +36,31 @@ export const backendService = {
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) {
-        throw new Error(`Backend error: ${response.status}`);
+      if (tokenResponse.ok) {
+        const tokenResult: TokenResponse = await tokenResponse.json();
+        console.log('Token response:', tokenResult);
+        
+        if (tokenResult.success && tokenResult.token) {
+          const checkoutUrl = `${heizölConfig.checkoutUrl}?token=${tokenResult.token}`;
+          console.log('Using token-based checkout URL:', checkoutUrl);
+          
+          return {
+            success: true,
+            checkoutUrl: checkoutUrl
+          };
+        } else {
+          console.warn('Token creation failed:', tokenResult.error);
+          throw new Error(tokenResult.error || 'Failed to create order token');
+        }
+      } else {
+        console.warn('Token endpoint failed with status:', tokenResponse.status);
+        throw new Error(`Token creation failed: ${tokenResponse.status}`);
       }
-
-      const result = await response.json();
-      console.log('Backend response:', result);
-      
-      return {
-        success: true,
-        checkoutUrl: result.checkoutUrl || `${heizölConfig.checkoutUrl}?${new URLSearchParams({
-          product: data.product,
-          quantity: data.quantity,
-          zipCode: data.zipCode,
-          shopId: data.shopId,
-          totalPrice: data.totalPrice.toString(),
-          deliveryFee: data.deliveryFee.toString()
-        }).toString()}`
-      };
     } catch (error) {
       console.error('Backend service error:', error);
       
-      // Fallback to direct checkout URL
+      // Enhanced fallback with better error handling
+      console.log('Falling back to direct parameter checkout');
       const params = new URLSearchParams({
         product: data.product,
         quantity: data.quantity,
@@ -60,9 +70,13 @@ export const backendService = {
         deliveryFee: data.deliveryFee.toString()
       });
       
+      const fallbackUrl = `${heizölConfig.checkoutUrl}?${params.toString()}`;
+      console.log('Fallback checkout URL:', fallbackUrl);
+      
       return {
         success: true,
-        checkoutUrl: `${heizölConfig.checkoutUrl}?${params.toString()}`
+        checkoutUrl: fallbackUrl,
+        error: `Using fallback checkout (${error instanceof Error ? error.message : 'Unknown error'})`
       };
     }
   }

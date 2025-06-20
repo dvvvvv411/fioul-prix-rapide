@@ -66,18 +66,27 @@ const HorizontalPriceCalculator = () => {
         deliveryFee: deliveryFee
       };
 
-      console.log('Horizontal calculator checkout data:', checkoutData);
+      console.log('Horizontal calculator - sending checkout data:', checkoutData);
       
       const result = await backendService.createCheckout(checkoutData);
       
       if (result.success && result.checkoutUrl) {
+        console.log('Horizontal calculator - opening checkout URL:', result.checkoutUrl);
         window.open(result.checkoutUrl, '_blank');
-        toast.success('Redirection vers le checkout...');
+        
+        if (result.error) {
+          toast.success('Redirection vers le checkout...', {
+            description: result.error
+          });
+        } else {
+          toast.success('Redirection vers le checkout...');
+        }
       } else {
+        console.error('Horizontal calculator - checkout failed:', result);
         toast.error(result.error || 'Erreur lors de la création du checkout');
       }
     } catch (error) {
-      console.error('Horizontal checkout error:', error);
+      console.error('Horizontal calculator - checkout error:', error);
       toast.error('Erreur lors de la commande. Veuillez réessayer.');
     } finally {
       setIsCalculating(false);
