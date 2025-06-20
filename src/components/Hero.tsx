@@ -106,7 +106,7 @@ const Hero = () => {
         </div>
 
         {/* Animated Price Calculator */}
-        <div className="max-w-6xl mx-auto animate-fade-in" style={{ animationDelay: '1.4s' }}>
+        <div id="price-calculator" className="max-w-6xl mx-auto animate-fade-in" style={{ animationDelay: '1.4s' }}>
           <HorizontalPriceCalculator />
         </div>
       </div>
