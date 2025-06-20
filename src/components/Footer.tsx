@@ -1,8 +1,13 @@
 
+
 import { Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -33,10 +38,10 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">Navigation</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><Link to="/" className="hover:text-white">Accueil</Link></li>
-              <li><Link to="/produits" className="hover:text-white">Produits</Link></li>
-              <li><Link to="/livraison" className="hover:text-white">Livraison</Link></li>
-              <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
+              <li><Link to="/" className="hover:text-white" onClick={scrollToTop}>Accueil</Link></li>
+              <li><Link to="/produits" className="hover:text-white" onClick={scrollToTop}>Produits</Link></li>
+              <li><Link to="/livraison" className="hover:text-white" onClick={scrollToTop}>Livraison</Link></li>
+              <li><Link to="/contact" className="hover:text-white" onClick={scrollToTop}>Contact</Link></li>
             </ul>
           </div>
 
@@ -44,10 +49,10 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">Informations Légales</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><Link to="/mentions-legales" className="hover:text-white">Mentions légales</Link></li>
-              <li><Link to="/cgv" className="hover:text-white">CGV</Link></li>
-              <li><Link to="/politique-confidentialite" className="hover:text-white">Politique de confidentialité</Link></li>
-              <li><Link to="/politique-cookies" className="hover:text-white">Politique de cookies</Link></li>
+              <li><Link to="/mentions-legales" className="hover:text-white" onClick={scrollToTop}>Mentions légales</Link></li>
+              <li><Link to="/cgv" className="hover:text-white" onClick={scrollToTop}>CGV</Link></li>
+              <li><Link to="/politique-confidentialite" className="hover:text-white" onClick={scrollToTop}>Politique de confidentialité</Link></li>
+              <li><Link to="/politique-cookies" className="hover:text-white" onClick={scrollToTop}>Politique de cookies</Link></li>
             </ul>
           </div>
         </div>
@@ -63,3 +68,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
