@@ -22,7 +22,7 @@ const Header = () => {
               <img 
                 src="https://i.imgur.com/NqMqAH6.png" 
                 alt="Total Fioul France"
-                className="h-12"
+                className="h-24"
               />
             </div>
 

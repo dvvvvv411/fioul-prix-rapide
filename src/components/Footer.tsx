@@ -11,7 +11,7 @@ const Footer = () => {
             <img 
               src="https://i.imgur.com/NqMqAH6.png" 
               alt="Total Fioul France"
-              className="h-12 mb-4"
+              className="h-24 mb-4"
             />
             <p className="text-gray-300 mb-4">
               Votre partenaire de confiance pour l'approvisionnement en fioul domestique en France.
