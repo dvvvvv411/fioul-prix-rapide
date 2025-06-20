@@ -2,19 +2,17 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Check, X, Flame, Star, Zap } from 'lucide-react';
+import { Check, X, Flame, Star } from 'lucide-react';
 
 const ProductComparison = () => {
   const comparisonFeatures = [
-    { feature: "Prix au litre", standard: "0,70€", premium: "0,73€", superieur: "0,76€" },
-    { feature: "Conformité normes", standard: true, premium: true, superieur: true },
-    { feature: "Additifs anticorrosion", standard: false, premium: true, superieur: true },
-    { feature: "Additifs nettoyants", standard: false, premium: true, superieur: true },
-    { feature: "Performance optimisée", standard: false, premium: true, superieur: true },
-    { feature: "Durée de stockage prolongée", standard: false, premium: true, superieur: true },
-    { feature: "Protection installation", standard: false, premium: true, superieur: true },
-    { feature: "Combustion extra-propre", standard: false, premium: false, superieur: true },
-    { feature: "Rendement énergétique maximal", standard: false, premium: false, superieur: true },
+    { feature: "Prix au litre", standard: "0,70€", premium: "0,73€" },
+    { feature: "Conformité normes", standard: true, premium: true },
+    { feature: "Additifs anticorrosion", standard: false, premium: true },
+    { feature: "Additifs nettoyants", standard: false, premium: true },
+    { feature: "Performance optimisée", standard: false, premium: true },
+    { feature: "Durée de stockage prolongée", standard: false, premium: true },
+    { feature: "Protection installation", standard: false, premium: true },
   ];
 
   return (
@@ -35,124 +33,133 @@ const ProductComparison = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
           {/* Standard Product */}
-          <Card className="relative hover:shadow-lg transition-shadow bg-white/90 backdrop-blur-sm border-white/40">
-            <CardHeader className="text-center pb-6">
-              <div className="mx-auto mb-4 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                <Flame className="text-total-blue" size={32} />
+          <Card className="relative hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white via-blue-50/30 to-white border-2 border-blue-100/50 hover:border-blue-200 group hover:scale-105">
+            <CardHeader className="text-center pb-6 relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent rounded-t-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative z-10">
+                <div className="mx-auto mb-4 w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-50 border-4 border-white shadow-lg rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Flame className="text-total-blue" size={36} />
+                </div>
+                <CardTitle className="text-2xl font-bold text-gray-900 mb-2">Fioul Standard</CardTitle>
+                <div className="text-4xl font-bold text-total-blue mt-2 mb-2">
+                  0,70€<span className="text-lg text-gray-600 font-normal">/litre</span>
+                </div>
+                <p className="text-gray-600 text-sm bg-gray-50 px-4 py-2 rounded-full inline-block">
+                  Solution économique et fiable
+                </p>
               </div>
-              <CardTitle className="text-2xl text-gray-900">Fioul Standard</CardTitle>
-              <div className="text-3xl font-bold text-total-blue mt-2">
-                0,70€<span className="text-lg text-gray-600">/litre</span>
-              </div>
-              <p className="text-gray-600 text-sm mt-2">Solution économique et fiable</p>
             </CardHeader>
-            <CardContent>
-              <Button className="w-full bg-total-blue hover:bg-blue-800 text-white mb-6">
+            <CardContent className="relative z-10">
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center gap-3 p-3 bg-blue-50/50 rounded-lg">
+                  <Check className="text-success-green" size={18} />
+                  <span className="text-gray-700 font-medium">Rapport qualité-prix optimal</span>
+                </div>
+                <div className="flex items-center gap-3 p-3 bg-blue-50/50 rounded-lg">
+                  <Check className="text-success-green" size={18} />
+                  <span className="text-gray-700 font-medium">Conforme aux normes françaises</span>
+                </div>
+                <div className="flex items-center gap-3 p-3 bg-blue-50/50 rounded-lg">
+                  <Check className="text-success-green" size={18} />
+                  <span className="text-gray-700 font-medium">Livraison rapide et fiable</span>
+                </div>
+              </div>
+              <Button className="w-full bg-gradient-to-r from-total-blue to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
                 Choisir Standard
               </Button>
             </CardContent>
           </Card>
 
           {/* Premium Product */}
-          <Card className="relative hover:shadow-lg transition-shadow border-total-red border-2 bg-white/90 backdrop-blur-sm">
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-              <Badge className="bg-total-red text-white px-4 py-1">
+          <Card className="relative hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white via-red-50/30 to-white border-2 border-total-red hover:border-red-600 group hover:scale-105">
+            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+              <Badge className="bg-gradient-to-r from-total-red to-red-600 text-white px-6 py-2 text-sm font-bold shadow-lg animate-pulse">
                 Recommandé
               </Badge>
             </div>
             
-            <CardHeader className="text-center pb-6 pt-8">
-              <div className="mx-auto mb-4 w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
-                <Star className="text-total-red" size={32} />
+            <CardHeader className="text-center pb-6 pt-8 relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-50/50 to-transparent rounded-t-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative z-10">
+                <div className="mx-auto mb-4 w-20 h-20 bg-gradient-to-br from-red-100 to-red-50 border-4 border-white shadow-lg rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Star className="text-total-red" size={36} />
+                </div>
+                <CardTitle className="text-2xl font-bold text-gray-900 mb-2">Fioul Premium</CardTitle>
+                <div className="text-4xl font-bold text-total-red mt-2 mb-2">
+                  0,73€<span className="text-lg text-gray-600 font-normal">/litre</span>
+                </div>
+                <p className="text-gray-600 text-sm bg-red-50 px-4 py-2 rounded-full inline-block">
+                  Enrichi avec additifs premium
+                </p>
               </div>
-              <CardTitle className="text-2xl text-gray-900">Fioul Premium</CardTitle>
-              <div className="text-3xl font-bold text-total-red mt-2">
-                0,73€<span className="text-lg text-gray-600">/litre</span>
-              </div>
-              <p className="text-gray-600 text-sm mt-2">Enrichi avec additifs premium</p>
             </CardHeader>
-            <CardContent>
-              <Button className="w-full bg-total-red hover:bg-red-700 text-white mb-6">
+            <CardContent className="relative z-10">
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center gap-3 p-3 bg-red-50/50 rounded-lg">
+                  <Check className="text-success-green" size={18} />
+                  <span className="text-gray-700 font-medium">Performance optimisée</span>
+                </div>
+                <div className="flex items-center gap-3 p-3 bg-red-50/50 rounded-lg">
+                  <Check className="text-success-green" size={18} />
+                  <span className="text-gray-700 font-medium">Additifs anticorrosion</span>
+                </div>
+                <div className="flex items-center gap-3 p-3 bg-red-50/50 rounded-lg">
+                  <Check className="text-success-green" size={18} />
+                  <span className="text-gray-700 font-medium">Protection installation</span>
+                </div>
+              </div>
+              <Button className="w-full bg-gradient-to-r from-total-red to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
                 Choisir Premium
-              </Button>
-            </CardContent>
-          </Card>
-
-          {/* Superior Product */}
-          <Card className="relative hover:shadow-lg transition-shadow border-amber-500 border-2 bg-white/90 backdrop-blur-sm">
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-              <Badge className="bg-amber-500 text-white px-4 py-1">
-                Haute Performance
-              </Badge>
-            </div>
-            
-            <CardHeader className="text-center pb-6 pt-8">
-              <div className="mx-auto mb-4 w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center">
-                <Zap className="text-amber-600" size={32} />
-              </div>
-              <CardTitle className="text-2xl text-gray-900">Fioul Supérieur</CardTitle>
-              <div className="text-3xl font-bold text-amber-600 mt-2">
-                0,76€<span className="text-lg text-gray-600">/litre</span>
-              </div>
-              <p className="text-gray-600 text-sm mt-2">Performance maximale garantie</p>
-            </CardHeader>
-            <CardContent>
-              <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white mb-6">
-                Choisir Supérieur
               </Button>
             </CardContent>
           </Card>
         </div>
 
         {/* Comparison Table */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-white/50">
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border-2 border-white/50">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50/80">
+              <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
                 <tr>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Caractéristiques</th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold text-total-blue">Standard</th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold text-total-red">Premium</th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold text-amber-600">Supérieur</th>
+                  <th className="px-8 py-6 text-left text-base font-bold text-gray-900">Caractéristiques</th>
+                  <th className="px-8 py-6 text-center text-base font-bold text-total-blue">Standard</th>
+                  <th className="px-8 py-6 text-center text-base font-bold text-total-red">Premium</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200/50">
                 {comparisonFeatures.map((item, index) => (
-                  <tr key={index} className="hover:bg-gray-50/30 transition-colors">
-                    <td className="px-6 py-4 text-sm font-medium text-gray-900">{item.feature}</td>
-                    <td className="px-6 py-4 text-center">
+                  <tr key={index} className="hover:bg-gray-50/50 transition-colors">
+                    <td className="px-8 py-5 text-base font-semibold text-gray-900">{item.feature}</td>
+                    <td className="px-8 py-5 text-center">
                       {typeof item.standard === 'boolean' ? (
                         item.standard ? (
-                          <Check className="mx-auto text-success-green" size={20} />
+                          <div className="inline-flex items-center justify-center w-8 h-8 bg-green-100 rounded-full">
+                            <Check className="text-success-green" size={20} />
+                          </div>
                         ) : (
-                          <X className="mx-auto text-gray-400" size={20} />
+                          <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
+                            <X className="text-gray-400" size={20} />
+                          </div>
                         )
                       ) : (
-                        <span className="font-semibold text-total-blue">{item.standard}</span>
+                        <span className="font-bold text-total-blue text-lg">{item.standard}</span>
                       )}
                     </td>
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-8 py-5 text-center">
                       {typeof item.premium === 'boolean' ? (
                         item.premium ? (
-                          <Check className="mx-auto text-success-green" size={20} />
+                          <div className="inline-flex items-center justify-center w-8 h-8 bg-green-100 rounded-full">
+                            <Check className="text-success-green" size={20} />
+                          </div>
                         ) : (
-                          <X className="mx-auto text-gray-400" size={20} />
+                          <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
+                            <X className="text-gray-400" size={20} />
+                          </div>
                         )
                       ) : (
-                        <span className="font-semibold text-total-red">{item.premium}</span>
-                      )}
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      {typeof item.superieur === 'boolean' ? (
-                        item.superieur ? (
-                          <Check className="mx-auto text-success-green" size={20} />
-                        ) : (
-                          <X className="mx-auto text-gray-400" size={20} />
-                        )
-                      ) : (
-                        <span className="font-semibold text-amber-600">{item.superieur}</span>
+                        <span className="font-bold text-total-red text-lg">{item.premium}</span>
                       )}
                     </td>
                   </tr>
