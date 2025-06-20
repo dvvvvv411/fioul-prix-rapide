@@ -38,20 +38,25 @@ export const backendService = {
       
       // Transform data to match backend expectations
       const liters = parseInt(data.quantity);
-      const pricePerLiter = liters > 0 ? (data.totalPrice - data.deliveryFee) / liters : 0;
       
       // Validate to prevent division by zero or invalid calculations
       if (liters <= 0) {
         throw new Error('Invalid quantity: must be greater than 0');
       }
       
+      // Calculate price per liter from product cost only (excluding delivery)
+      const pricePerLiter = data.totalPrice / liters;
+      
+      // Total amount should include delivery fee
+      const totalAmount = data.totalPrice + data.deliveryFee;
+      
       const backendData: BackendCheckoutData = {
         product: data.product,
         liters: liters,
         shop_id: data.shopId,
-        total_amount: data.totalPrice,
+        total_amount: totalAmount, // Fixed: now includes delivery fee
         delivery_fee: data.deliveryFee,
-        price_per_liter: parseFloat(pricePerLiter.toFixed(4)) // Round to 4 decimal places for precision
+        price_per_liter: parseFloat(pricePerLiter.toFixed(4)) // Fixed: calculated from product cost only
       };
       
       console.log('Transformed data for backend:', backendData);
