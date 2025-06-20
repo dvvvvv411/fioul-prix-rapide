@@ -26,11 +26,11 @@ const Benefits = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-white via-orange-50/30 to-white relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-br from-red-500/20 to-red-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-tl from-red-400/15 to-red-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-br from-orange-200/20 to-red-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-tl from-red-200/15 to-orange-200/15 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -40,11 +40,11 @@ const Benefits = () => {
             {/* Main Title */}
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-500 via-red-500 to-red-600 bg-clip-text text-transparent">
                   Bonnes raisons
                 </span>
                 <br />
-                <span className="text-white">
+                <span className="text-gray-900">
                   de nous choisir
                 </span>
               </h1>
@@ -55,19 +55,19 @@ const Benefits = () => {
               {benefits.map((benefit, index) => (
                 <div 
                   key={index} 
-                  className="group flex items-start space-x-4 p-4 rounded-lg hover:bg-white/5 hover:shadow-lg transition-all duration-300 cursor-pointer hover:transform hover:translate-x-2"
+                  className="group flex items-start space-x-4 p-4 rounded-lg hover:bg-white/60 hover:shadow-lg transition-all duration-300 cursor-pointer hover:transform hover:translate-x-2"
                 >
                   {/* Checkmark Icon */}
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 p-2 shadow-lg group-hover:shadow-xl transition-shadow">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 p-2 shadow-lg group-hover:shadow-xl transition-shadow">
                     <Check className="w-full h-full text-white stroke-[3]" />
                   </div>
                   
                   {/* Content */}
                   <div className="flex-1 space-y-2">
-                    <h4 className="text-xl font-bold text-white group-hover:text-red-400 transition-colors">
+                    <h4 className="text-xl font-bold text-gray-900 group-hover:text-total-blue transition-colors">
                       {benefit.title}
                     </h4>
-                    <p className="text-gray-300 leading-relaxed text-base">
+                    <p className="text-gray-600 leading-relaxed text-base">
                       {benefit.description}
                     </p>
                   </div>
@@ -88,11 +88,11 @@ const Benefits = () => {
                 />
                 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                 
                 {/* Decorative Elements */}
-                <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-red-500 to-red-600 rounded-full opacity-80 blur-xl"></div>
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-tr from-red-400 to-red-500 rounded-full opacity-70 blur-lg"></div>
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-full opacity-80 blur-xl"></div>
+                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-tr from-red-400 to-orange-500 rounded-full opacity-70 blur-lg"></div>
               </div>
             </div>
           </div>
