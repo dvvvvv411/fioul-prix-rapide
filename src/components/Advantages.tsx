@@ -1,5 +1,4 @@
-
-import { Check, Truck, Shield, Award, Phone, CreditCard } from 'lucide-react';
+import { Check, Truck, Shield, Award, Phone, CreditCard, Star, Flame } from 'lucide-react';
 
 const Advantages = () => {
   const advantages = [
@@ -14,7 +13,7 @@ const Advantages = () => {
       description: "Pas de frais cachés, tout est affiché"
     },
     {
-      icon: Award,
+      icon: Flame,
       title: "Livraison rapide partout en France",
       description: "Service national de qualité"
     },
@@ -29,7 +28,7 @@ const Advantages = () => {
       description: "Transactions protégées et fiables"
     },
     {
-      icon: Shield,
+      icon: Star,
       title: "Qualité certifiée",
       description: "Fioul conforme aux normes françaises"
     }
