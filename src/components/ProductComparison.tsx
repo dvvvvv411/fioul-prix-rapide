@@ -1,9 +1,13 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Check, X, Flame, Star } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ProductComparison = () => {
+  const navigate = useNavigate();
+
   const comparisonFeatures = [
     { feature: "Prix au litre", standard: "0,70€", premium: "0,73€" },
     { feature: "Conformité normes", standard: true, premium: true },
@@ -13,6 +17,17 @@ const ProductComparison = () => {
     { feature: "Durée de stockage prolongée", standard: false, premium: true },
     { feature: "Protection installation", standard: false, premium: true },
   ];
+
+  const handleScrollToComparison = () => {
+    const element = document.querySelector('section[data-section="comparison"]');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleGoToLanding = () => {
+    navigate('/#hero');
+  };
 
   return (
     <section className="py-20 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
@@ -65,7 +80,10 @@ const ProductComparison = () => {
                   <span className="text-gray-700 font-medium">Livraison rapide et fiable</span>
                 </div>
               </div>
-              <Button className="w-full bg-gradient-to-r from-total-blue to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+              <Button 
+                onClick={handleGoToLanding}
+                className="w-full bg-gradient-to-r from-total-blue to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+              >
                 Choisir Standard
               </Button>
             </CardContent>
@@ -109,7 +127,10 @@ const ProductComparison = () => {
                   <span className="text-gray-700 font-medium">Protection installation</span>
                 </div>
               </div>
-              <Button className="w-full bg-gradient-to-r from-total-red to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+              <Button 
+                onClick={handleGoToLanding}
+                className="w-full bg-gradient-to-r from-total-red to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+              >
                 Choisir Premium
               </Button>
             </CardContent>
