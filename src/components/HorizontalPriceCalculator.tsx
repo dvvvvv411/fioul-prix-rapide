@@ -69,7 +69,42 @@ const HorizontalPriceCalculator = () => {
       
       {/* Horizontal Calculator Form */}
       <div className="grid grid-cols-1 lg:grid-cols-6 gap-4 items-end">
-        {/* Product Selection */}
+        {/* Zip Code - moved to first position */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            <MapPin size={16} className="inline mr-1" />
+            Code postal
+          </label>
+          <Input
+            type="text"
+            placeholder="75001"
+            value={zipCode}
+            onChange={(e) => setZipCode(e.target.value)}
+            pattern="[0-9]{5}"
+            maxLength={5}
+            className="h-12"
+          />
+        </div>
+
+        {/* Quantity - moved to second position */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            <Fuel size={16} className="inline mr-1" />
+            Quantité (L)
+          </label>
+          <Input
+            type="number"
+            placeholder="2000"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            min={heizölConfig.limits.minLiters}
+            max={heizölConfig.limits.maxLiters}
+            step="100"
+            className="h-12"
+          />
+        </div>
+
+        {/* Product Selection - moved to third position */}
         <div className="lg:col-span-2">
           <label className="block text-sm font-medium text-gray-700 mb-2">Type de fioul</label>
           <div className="grid grid-cols-2 gap-2">
@@ -99,41 +134,6 @@ const HorizontalPriceCalculator = () => {
               <div className="text-lg font-bold text-red-600">0,73€/L</div>
             </button>
           </div>
-        </div>
-
-        {/* Zip Code */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            <MapPin size={16} className="inline mr-1" />
-            Code postal
-          </label>
-          <Input
-            type="text"
-            placeholder="75001"
-            value={zipCode}
-            onChange={(e) => setZipCode(e.target.value)}
-            pattern="[0-9]{5}"
-            maxLength={5}
-            className="h-12"
-          />
-        </div>
-
-        {/* Quantity */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            <Fuel size={16} className="inline mr-1" />
-            Quantité (L)
-          </label>
-          <Input
-            type="number"
-            placeholder="2000"
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
-            min={heizölConfig.limits.minLiters}
-            max={heizölConfig.limits.maxLiters}
-            step="100"
-            className="h-12"
-          />
         </div>
 
         {/* Price Display */}
