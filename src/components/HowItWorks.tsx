@@ -24,12 +24,12 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white via-orange-50/30 to-white relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-gray-50 via-orange-50/50 to-gray-100 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-br from-orange-200/30 to-red-200/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-tl from-red-200/25 to-orange-200/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-orange-100/40 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-br from-orange-200/40 to-red-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-tl from-red-200/35 to-orange-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-orange-100/50 to-transparent rounded-full blur-3xl"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
