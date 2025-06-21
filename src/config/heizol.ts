@@ -20,7 +20,7 @@ export const heizölConfig = {
     deliveryFee: 39
   },
   limits: {
-    minLiters: 1000,
+    minLiters: 1500,
     maxLiters: 20000
   }
 };
