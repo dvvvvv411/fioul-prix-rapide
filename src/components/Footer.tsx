@@ -1,5 +1,4 @@
 
-
 import { Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -59,7 +58,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 mt-8 pt-8">
           <div className="text-center text-gray-400">
-            © 2024 Total Fioul France. Tous droits réservés.
+            © 2025 Total Fioul France. Tous droits réservés.
           </div>
         </div>
       </div>
@@ -68,4 +67,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

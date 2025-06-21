@@ -46,34 +46,12 @@ const ContactForm = () => {
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
                 Notre équipe de spécialistes vous accompagne dans le choix de vos besoins énergétiques. 
-                Disponibles par téléphone ou en ligne, nos conseillers vous guident pour optimiser votre commande.
+                Disponibles en ligne, nos conseillers vous guident pour optimiser votre commande.
               </p>
             </div>
 
-            {/* Contact Cards */}
+            {/* Contact Cards - Phone removed */}
             <div className="space-y-6">
-              <Card className="group hover:shadow-lg transition-all duration-300 hover:transform hover:translate-x-2">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-green-600 p-3 shadow-lg">
-                      <Phone className="w-full h-full text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-xl font-bold text-gray-900 mb-2">
-                        Service téléphonique
-                      </h4>
-                      <p className="text-gray-600 mb-3">
-                        Appelez-nous pour obtenir un conseil personnalisé et un devis immédiat
-                      </p>
-                      <div className="space-y-1">
-                        <p className="font-semibold text-lg text-gray-900">01 23 45 67 89</p>
-                        <p className="text-gray-500 text-sm">Lundi - Vendredi : 8h00 - 18h00</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
               <Card className="group hover:shadow-lg transition-all duration-300 hover:transform hover:translate-x-2">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">

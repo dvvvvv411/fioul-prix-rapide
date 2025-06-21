@@ -35,17 +35,8 @@ const ContactHero = () => {
             et vous accompagner dans votre commande de fioul domestique
           </p>
 
-          {/* Animated Contact Info Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12 max-w-3xl mx-auto">
-            <div className="flex items-center justify-center gap-3 p-4 bg-white/90 backdrop-blur-sm border border-white/50 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
-                <Phone size={20} className="text-green-600" />
-              </div>
-              <div className="text-left">
-                <div className="text-sm font-semibold text-gray-900">01 23 45 67 89</div>
-                <div className="text-xs text-gray-500">Service client</div>
-              </div>
-            </div>
+          {/* Animated Contact Info Cards - Phone removed */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12 max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-3 p-4 bg-white/90 backdrop-blur-sm border border-white/50 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 animate-fade-in" style={{ animationDelay: '0.6s' }}>
               <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
                 <Mail size={20} className="text-blue-600" />
