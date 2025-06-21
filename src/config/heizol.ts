@@ -16,7 +16,7 @@ export const heizölConfig = {
     }
   },
   delivery: {
-    freeDeliveryThreshold: 3000,
+    freeDeliveryThreshold: 2000,
     deliveryFee: 39
   },
   limits: {
